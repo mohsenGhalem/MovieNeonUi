@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.openSans().fontFamily,
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const OnBoardingScreen(),
     );
   }
 }

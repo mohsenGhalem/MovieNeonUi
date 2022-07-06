@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:movie_neon_app/components/custom_outline.dart';
 import 'package:movie_neon_app/constants.dart';
+import 'package:movie_neon_app/screens/home_screen.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
@@ -85,7 +86,6 @@ class OnBoardingScreen extends StatelessWidget {
                         1
                       ]),
                   child: Container(
-
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         gradient: LinearGradient(
@@ -103,8 +103,7 @@ class OnBoardingScreen extends StatelessWidget {
                               0.6,
                               1
                             ]),
-                        image:const DecorationImage(
-
+                        image: const DecorationImage(
                             alignment: Alignment.bottomLeft,
                             fit: BoxFit.cover,
                             image: AssetImage('assets/img-onboarding.png'))),
@@ -157,10 +156,10 @@ class OnBoardingScreen extends StatelessWidget {
                         0.6,
                         1
                       ]),
-
                   child: InkWell(
-                    onTap: (){
-
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (ctx) => HomeScreen()));
                     },
                     child: Container(
                       alignment: Alignment.center,
@@ -199,15 +198,18 @@ class OnBoardingScreen extends StatelessWidget {
                 //Indicator
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(3, (index) => Container(
-                    margin: const EdgeInsets.only(left: 5,right: 5),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: index==0? Constants.kWhiteColor :Constants.kGreyColor
-                    ),
-                    height: 8,
-                    width: 8,
-                  )),
+                  children: List.generate(
+                      3,
+                      (index) => Container(
+                            margin: const EdgeInsets.only(left: 5, right: 5),
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: index == 0
+                                    ? Constants.kWhiteColor
+                                    : Constants.kGreyColor),
+                            height: 8,
+                            width: 8,
+                          )),
                 ),
                 SizedBox(
                   height: screenHeight * 0.01,
