@@ -201,21 +201,57 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      floatingActionButton: Container(
-        width: 64,
-        height: 64,
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          gradient: LinearGradient(colors: [
-            Constants.kPinkColor,
-            Constants.kGreenColor,
-          ]),
-        ),
-        child: Container(
-          color: Colors.grey,
-          height: 10,
-          width: 10,
-          child: const Icon(Icons.add),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            width: 64,
+            height: 64,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(colors: [
+                Constants.kPinkColor,
+                Constants.kGreenColor,
+              ]),
+            ),
+            child: null,
+          ),
+          Container(
+            width: 58,
+            height: 58,
+            decoration: const BoxDecoration(
+                shape: BoxShape.circle, color: Constants.kGreyColor),
+            child: Container(
+              alignment: Alignment.center,
+              width: 58,
+              height: 58,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: LinearGradient(colors: [
+                  Constants.kPinkColor.withOpacity(0.2),
+                  Constants.kGreenColor.withOpacity(0.2),
+                ]),
+              ),
+              child: SvgPicture.asset(Constants.kIconPlus),
+            ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
+        height: screenHeight * 0.1,
+        color: Constants.kGreyColor.withOpacity(0.2),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SvgPicture.asset(Constants.kIconHome),
+            SvgPicture.asset(Constants.kIconPlayOnTv),
+            SvgPicture.asset(Constants.kIconCategories),
+            SvgPicture.asset(Constants.kIconDownload),
+          ],
         ),
       ),
     );
