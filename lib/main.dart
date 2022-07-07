@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_neon_app/screens/home_screen.dart';
+import 'package:movie_neon_app/screens/movie_details.dart';
 import 'package:movie_neon_app/screens/on_boarding_screen.dart';
 
 void main() {
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.openSans().fontFamily,
         primarySwatch: Colors.blue,
       ),
+      routes: {"/MovieDetails": (context) => const MovieDetails()},
       home: const OnBoardingScreen(),
     );
   }

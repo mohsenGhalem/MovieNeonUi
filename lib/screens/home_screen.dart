@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:movie_neon_app/components/masked_image.dart';
 import 'package:movie_neon_app/constants.dart';
 import 'package:movie_neon_app/models/movie.dart';
+import 'package:movie_neon_app/screens/movie_details.dart';
 
 import '../components/search_field_widget.dart';
 
@@ -133,7 +134,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           } else {
                             mask = Constants.kMaskCenter;
                           }
-                          return GestureDetector(
+                          return InkWell(
+                            onTap: () {
+                              Navigator.of(context).pushNamed('/MovieDetails',
+                                  arguments: {'id': index, 'New': true});
+                            },
                             child: Container(
                               margin: EdgeInsets.only(
                                   left: index == 0 ? 20.0 : 0.0),
@@ -178,7 +183,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           } else {
                             mask = Constants.kMaskCenter;
                           }
-                          return GestureDetector(
+                          return InkWell(
+                            onTap: () {
+                              Navigator.of(context).pushNamed('/MovieDetails',
+                                  arguments: {'id': index, 'New': false});
+                            },
                             child: Container(
                               alignment: Alignment.bottomCenter,
                               margin: EdgeInsets.only(
@@ -203,42 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
-      floatingActionButton: Stack(
-        alignment: Alignment.center,
-        children: [
-          Container(
-            width: 64,
-            height: 64,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: LinearGradient(colors: [
-                Constants.kPinkColor,
-                Constants.kGreenColor,
-              ]),
-            ),
-            child: null,
-          ),
-          Container(
-            width: 58,
-            height: 58,
-            decoration: const BoxDecoration(
-                shape: BoxShape.circle, color: Constants.kGreyColor),
-            child: Container(
-              alignment: Alignment.center,
-              width: 58,
-              height: 58,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(colors: [
-                  Constants.kPinkColor.withOpacity(0.2),
-                  Constants.kGreenColor.withOpacity(0.2),
-                ]),
-              ),
-              child: SvgPicture.asset(Constants.kIconPlus),
-            ),
-          ),
-        ],
-      ),
+      floatingActionButton: newMethod(),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
         height: screenHeight * 0.1,
@@ -254,6 +228,45 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  Stack newMethod() {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Container(
+          width: 64,
+          height: 64,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(colors: [
+              Constants.kPinkColor,
+              Constants.kGreenColor,
+            ]),
+          ),
+          child: null,
+        ),
+        Container(
+          width: 58,
+          height: 58,
+          decoration: const BoxDecoration(
+              shape: BoxShape.circle, color: Constants.kGreyColor),
+          child: Container(
+            alignment: Alignment.center,
+            width: 58,
+            height: 58,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(colors: [
+                Constants.kPinkColor.withOpacity(0.2),
+                Constants.kGreenColor.withOpacity(0.2),
+              ]),
+            ),
+            child: SvgPicture.asset(Constants.kIconPlus),
+          ),
+        ),
+      ],
     );
   }
 }
